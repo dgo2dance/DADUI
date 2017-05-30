@@ -1,0 +1,19 @@
+
+
+<view class="container1">
+  
+    <block wx:for-items="{{items}}">
+        <view class="flex item">
+            <view class="item_left">
+                <image src="{{item.image}}"/>
+            </view>
+            <view class="flex_auto item_middle">
+                <view><text class="title">{{item.title}}</text></view>
+                <view><text class="sub_title">{{item.subTitle}}</text></view>
+                <view><text class="actor">{{item.actor}}</text></view>
+                 <view><text class="actor">{{item.num}}</text></view>
+            </view>
+        
+        </view>
+    </block>
+</view>

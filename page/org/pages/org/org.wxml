@@ -1,0 +1,28 @@
+<!--main.wxml-->
+
+<import src="../../../../bower_components/zanui-weapp/dist/tab/index.wxml" />
+<view>
+
+    <loading hidden="{{hidden}}">
+        加载中...
+    </loading>
+
+  <image class="logo" src="https://img.yzcdn.cn/public_files/2017/02/06/ee0ebced79a80457d77ce71c7d414c74.png"></image>
+
+
+  <view style="margin: 20px 0">
+    <template is="zan-tab" data="{{tab: tab1, componentId: 'tab1'}}"></template>
+  </view>
+ 
+
+    <view class="card" wx:for="{{items}}">
+        <view data-publish-time="{{item.time}}" bindtap="onItemClick">
+            <image class="image" mode="aspectFill" src="{{item.src}}"/>
+            <text class="time">{{item.time}}</text>
+            <view class="title">{{item.title}}</view>
+        </view>
+    </view>
+
+
+
+</view>
