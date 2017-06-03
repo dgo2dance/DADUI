@@ -1,5 +1,6 @@
 //url相关
-var BASE_URL = "https://gank.io/api";
+//var BASE_URL = "https://gank.io/api";
+var BASE_URL = "";
 var GET_URL = BASE_URL.concat("/history/content/100/1");
 
 //error相关

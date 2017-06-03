@@ -1,4 +1,6 @@
 
+@import "../common/index.wxss";
+
 .container {
     background-color: #F2f2f2;
 }
@@ -39,17 +41,16 @@ view.text text {
 .item {
     padding: 10px;
     color: #787878;
-    border-top: 1px solid #eaeaea;
     border-bottom: 1px solid #eaeaea;
 }
 
 .item image {
     display: block;
-    width: 108rpx;
-    height: 108rpx;
-    border-radius:50%;
+    width: 90rpx;
+    height: 90rpx;
+    border-radius:0%;
     margin: 10rpx;
-    background-color: #09bb07;
+    background-color: orange;
 }
 
 .item_middle {

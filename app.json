@@ -5,11 +5,15 @@
     "page/org/pages/org/org",
     "page/org/pages/addOrg/addOrg",
     "page/org/pages/person/person",
+    "page/org/pages/personList/personList",
     "page/org/pages/welcome/welcome",
+    "page/org/pages/write/write",
 
     "page/iam/index",
 
     "page/iam/pages/info/info",
+    "page/iam/pages/info01/info01",
+    "page/iam/pages/info02/info02",
     "page/iam/pages/sugar/sugar",
     "page/iam/pages/myVote/myVote",
     "page/iam/pages/voteMe/voteMe"
@@ -23,19 +27,19 @@
   },
   "tabBar": {
     "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
+    "selectedColor": "#17d3ca",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [{
       "pagePath": "page/org/index",
       "iconPath": "image/icon_social_slack.png",
       "selectedIconPath": "image/icon_slack_hl.png",
-      "text": ""
+      "text": "频道"
     }, {
       "pagePath": "page/iam/index",
       "iconPath": "image/icon_per.png",
       "selectedIconPath": "image/icon_per_hl.png",
-      "text": ""
+      "text": "我的"
     }]
   },
   "networkTimeout": {

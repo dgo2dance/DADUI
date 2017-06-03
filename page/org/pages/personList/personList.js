@@ -6,56 +6,49 @@ Page({
         subTitle: 'ddd',
         actor: '通过@will',
         num: '100人在频道中',
-        score: '10',
-        action: 'rr'
+        gender: 'M'
       }, {
         image: "111.png",
         title: '漂亮的人',
         subTitle: '相遇的人终会遇到',
         actor: '通过@will',
         num: '100人在频道中',
-        score: '10',
-        action: 'rr'
+        gender: 'M'
         }, {
           image: "111.png",
           title: '漂亮的人',
           subTitle: '相遇的人终会遇到',
           actor: '通过@will',
           num: '100人在频道中',
-          score: '10',
-          action: 'rr'
+        gender: 'M'
       }, {
         image: "111.png",
         title: '漂亮的人',
         subTitle: '相遇的人终会遇到',
         actor: '通过@will',
         num: '100人在频道中',
-        score: '10',
-        action: 'rr'
+        gender: 'M'
         }, {
           image: "111.png",
           title: '漂亮的人',
           subTitle: '相遇的人终会遇到',
           actor: '通过@will',
           num: '100人在频道中',
-          score: '10',
-          action: 'rr'
+        gender: 'M'
       }, {
         image: "111.png",
         title: '漂亮的人',
         subTitle: '相遇的人终会遇到',
         actor: '通过@will',
         num: '100人在频道中',
-        score: '10',
-        action: 'rr'
+        gender: 'M'
         }, {
           image: "111.png",
           title: '漂亮的人',
           subTitle: '相遇的人终会遇到',
           actor: '通过@will',
           num: '100人在频道中',
-          score: '10',
-          action: 'rr'
+        gender: 'M'
         }],
         hidden: false
     },

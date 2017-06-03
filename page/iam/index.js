@@ -8,7 +8,7 @@ Page({
     list: [ {
         id: 'storage',
         name: '个人信息',
-        url: 'info/info'
+        url: 'info01/info01'
       },
     {
         id: 'myChat',

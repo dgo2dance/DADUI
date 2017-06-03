@@ -1,0 +1,90 @@
+
+<view class="weui-cells weui-cells_form">
+
+
+
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">承诺我是single:</text>
+        </view>
+        <view class="weui-cell__bd">
+          <label class="checkbox" wx:for="{{items}}">
+         <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+         </label>
+        </view>
+    </view>
+
+
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">生日:</text>
+        </view>
+        <view class="weui-cell__bd">
+      <picker mode="date" value="{{date}}" start="1980-09-01" end="2017-09-01" bindchange="bindDateChange">
+                  <view class="weui-input">{{date}}</view>
+            </picker>
+        </view>
+   	</view>
+
+
+   	<view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">城市:</text>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+              <view class="weui-input">{{array[index]}}</view>
+            </picker>
+        </view>
+   	</view>
+
+
+   	<view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">身高:</text>
+        </view>
+        <view class="weui-cell__bd">
+               <slider value="150" bindchange="slider4change" min="100" max="200" show-value/>
+        </view>
+   	</view>
+
+
+
+   	<view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">收入:</text>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{incomeArray}}">
+              <view class="weui-input">{{incomeArray[index]}}</view>
+            </picker>
+        </view>
+   	</view>
+
+
+   	<view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">是否有房:</text>
+        </view>
+        <view class="weui-cell__bd">
+           <view class="weui-cell__ft">
+            <switch />
+          </view>
+        </view>
+   	</view>
+
+   	 <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">是否有车:</text>
+        </view>
+        <view class="weui-cell__bd">
+           <view class="weui-cell__ft">
+            <switch />
+          </view>
+        </view>
+   	</view>
+
+<button type="primary" bindtap="submit">下一步</button>
+
+</view>
+

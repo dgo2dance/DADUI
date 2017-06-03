@@ -130,3 +130,8 @@ view.text text {
   color:#fff;
   font-size: 34rpx;
 }
+
+.gender{
+  font-size:30rpx;
+  color:#aaaaaa;
+}
