@@ -3,33 +3,24 @@ var api = require('../../utils/api.js');
 var app = getApp();
 Page({
   data: {
-    list: []
+    items: []
   },
 
   onLoad: function (options) {
-
     var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      console.log("userInfo");
-      console.log(userInfo);
-      that.setData({
-        userInfo:userInfo
-      });
-      //向服务端发起请求
-      requestData(that,userInfo);
-
-    });
-
-    
-   
+    //调用应用实例的方法获取全局数据,进行登录
+    console.log('checkSession'+wx.checkSession());
+ //   app.getUserInfo(loginRequest);
+   // loginRequest(that.globalData.userInfo,that.globalData.openid)
+    //向服务端发起请求，获取org信息
+    getOrg(that);
   },
 
   //跳转到频道详细页
   kindToggle: function (e) {
-    var id = e.currentTarget.id, list = this.data.list;
-    var targetUrl = "pages/org/org";
+    var id = e.currentTarget.dataset.id;
+    var targetUrl = "pages/org/org?id="+id;
+    console.log('targetUrl'+targetUrl);
         wx.navigateTo({
             url: targetUrl
         });
@@ -39,39 +30,66 @@ Page({
 
 
 /**
- * 请求数据
- * @param that Page的对象，用其进行数据的更新
- * @param targetPage 请求的目标页码
+ * 请求登录
  */
-function requestData(that,userInfo) {
-  console.log("11userInfo");
+function loginRequest(userInfo,openid) {
+  console.log("longRequest");
   console.log(userInfo);
   wx.request({
     url: api.getLogin(),
     data:{
-      "openid":userInfo.openid,
-      "nickName":userInfo.nickName,
-      "gender":userInfo.gender,
-      "avatatUrl":userInfo.avatatUrl,
+      "openid":openid,
+      "nickname":userInfo.nickName,
+      "gender":parseInt(userInfo.gender),
+      "avatarUrl":userInfo.avatarUrl,
       "city":userInfo.city,
-      "provience":userInfo.provience,
+      "provience":userInfo.province,
       "country":userInfo.country
     },
     method:'POST',
-    header: {
-      "Content-Type": "application/json"
-    },
+    header: {'content-type': 'application/x-www-form-urlencoded'},
     success: function (res) {
           console.log('onRequest');
-          console.log(res);
-          console.log(res.data.data.userId);
-           that.setData({
+          console.log(res.data.data.sessionId);
+          wx.setStorage({
+           key:'JSESSIONID', 
+            data:res.data.data.sessionId
+             });
+       //    that.setData({
       //     list: res.data.data.org;
-      })
+     // })
     },
     fail:function(){
       console.log('fail');
     },
   });
-}
+};
 
+/**
+ * 获取组织信息
+ */
+function getOrg(that){
+   console.log("getOrg");
+   wx.showModal({
+  title: 'GETOrg'
+});
+   var sessionId= wx.getStorageSync('JSESSIONID');
+   console.log("sessionId"+sessionId);
+   wx.request({
+    url: api.getOrgList(),
+    data:{},
+    method:'GET',
+    header: {'Content-type': 'application/x-www-form-urlencoded',
+             'Cookie':'SESSION='+sessionId},
+    success: function (res) {
+          console.log('SUCCESS-GET-ORG');
+          console.log(res.data);
+           that.setData({
+           items: res.data.data
+      })
+    },
+    fail:function(){
+      console.log('FAIL-GET-ORG');
+    },
+  });
+}

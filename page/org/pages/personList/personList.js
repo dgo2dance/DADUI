@@ -167,4 +167,3 @@ function bindData(itemData) {
     mSrcs.push(src);
 }
 
-var Constant = require('../../../../utils/constant.js');

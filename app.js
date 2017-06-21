@@ -7,17 +7,27 @@ App({
     wx.setStorageSync('logs', logs)
   },
   getUserInfo:function(cb){
+      wx.showModal({
+  title: '0'
+});
     var that = this
-    if(this.globalData.userInfo){
+    if(this.globalData.userInfo){  
+       wx.showModal({
+  title: '1'
+});
       typeof cb == "function" && cb(this.globalData.userInfo)
     }else{
       //调用登录接口
+
+       wx.showModal({
+  title: '2'
+});
+
       wx.login({
         success: function (loginCode) {
           wx.getUserInfo({
             success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
+              that.globalData.userInfo = res.userInfo;
             }
           });
 
@@ -34,18 +44,16 @@ App({
               console.log("openid")
               console.log(res);             
               console.log(res.data.openid) //获取openid  
-              that.globalData.userInfo.openid = res.data.openid
-              typeof cb == "function" && cb(that.globalData.userInfo)
+              that.globalData.openid = res.data.openid;
+              typeof cb == "function" && cb(that.globalData.userInfo,that.globalData.openid)
             }  
           });
-
-
-          
         }
       })
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    openid:null
   }
 })

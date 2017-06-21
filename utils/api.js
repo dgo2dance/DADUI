@@ -13,6 +13,7 @@ var GALLERIES = '/galleries';
 var COMMENTS = '/comments';
 
 var LOGIN = 'login';
+var orgList = 'org/list';
 
 var CKEY = 'pd67OURWTmXMy6X1E3DL5jmr9aBAZ9VLjZp4jLvz';
 
@@ -20,6 +21,13 @@ var CKEY = 'pd67OURWTmXMy6X1E3DL5jmr9aBAZ9VLjZp4jLvz';
 function _getLogin(){
   return HOST_URI + LOGIN;
 }
+
+
+//getOrg  URL
+function _getOrgList(){
+  return HOST_URI + orgList;
+}
+
 
 function _showUser(id){
   return HOST_URI + USERS + SHOW_ID + id;
@@ -32,5 +40,6 @@ function _isNone(s){
 
 
 module.exports = {
-  getLogin: _getLogin
+  getLogin: _getLogin,
+  getOrgList:_getOrgList
 };

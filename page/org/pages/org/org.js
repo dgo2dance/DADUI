@@ -61,22 +61,13 @@ Page({
     },
     onLoad: function (options) {
         var that = this;
-        requestData(that, mCurrentPage + 1);
-        var tab1= this.data.tab1
-        that.setData({
-              tab1:tab1
-            });
+        console.log('id'+options.id);
+
+        requestData(options.id);
+
     },
 
-    onItemClick: function (event) {
-        var targetUrl = Constant.PAGE_SPECIFIC;
-        if (event.currentTarget.dataset.publishTime != null)
-            targetUrl = targetUrl + "?publishTime=" + event.currentTarget.dataset.publishTime;
 
-        wx.navigateTo({
-            url: targetUrl
-        });
-    },
 
     toWrite: function (e){
     var id = e.currentTarget.id;
@@ -90,9 +81,7 @@ Page({
 
     onPostClick: function (event) {
         console.log("onPostClick");
-        wx.navigateTo({
-            url: Constant.PAGE_POSt
-        });
+       
     }
 });
 
@@ -108,7 +97,7 @@ var mCurrentPage = -1;
  */
 function requestData(that, targetPage) {
     wx.request({
-        url: Constant.GET_URL.replace("(/\(\d+))$", targetPage),
+        url: 'sss',
         header: {
             "Content-Type": "application/json"
         },
@@ -118,7 +107,7 @@ function requestData(that, targetPage) {
                 res.data.results == null ||
                 res.data.results.length <= 0) {
 
-                console.error(Constant.ERROR_DATA_IS_NULL);
+          
                 return;
             }
 
@@ -142,36 +131,5 @@ function requestData(that, targetPage) {
 }
 
 
-/**
- * toWrite
- */
 
 
-
-
-
-/**
- * 绑定数据
- * @param itemData Gank的接口返回的content值，里面有各种相关的信息
- */
-function bindData(itemData) {
-
-    var re = new RegExp("[a-zA-z]+://[^\"]*");
-    //图片URL标志之前的是"img alt"
-    var title = itemData.content.split("img alt=")[1].match(re)[0];
-
-    //todo 挺奇怪的，小程序不能显示以 （ww+数字） 开头的图片，把它改成 ws 开头就可以了，不知道为什么
-    if( -1 != (title.search("//ww"))){
-        var src = title.replace("//ww", "//ws");
-    }
-    //早期的URL不一定是ww开头的，不需要转换直接调用
-    else{
-        var src = title;
-    }
-
-    mTitles.push(itemData.title);
-    mTimes.push(itemData.publishedAt.split("T")[0]);
-    mSrcs.push(src);
-}
-
-var Constant = require('../../../../utils/constant.js');
