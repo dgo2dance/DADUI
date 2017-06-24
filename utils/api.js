@@ -6,14 +6,20 @@
 // var HOST_URI = 'https://api.500px.com/v1/';
 var HOST_URI = 'http://localhost:8080/';
 
-var PHOTOS = 'photos';
-var USERS = '/users';
-var SHOW_ID = '/show?id=';
-var GALLERIES = '/galleries';
-var COMMENTS = '/comments';
-
+//登录接口
 var LOGIN = 'login';
+//查询群组列表接口
 var orgList = 'org/list';
+//查询群组内容列表接口
+var getCon= 'org/con/list';
+//查询群组用户列表接口
+var getUser= 'org/user/list';
+//查询用户详情接口
+var userDetail= 'user/detail';
+//用户编辑个人信息infoFirst 第一步接口
+var userEditFirst= 'user/edit/first'
+//用户编辑个人信息infoSecond 第一步接口
+var userEditSecond= 'user/edit/second'
 
 var CKEY = 'pd67OURWTmXMy6X1E3DL5jmr9aBAZ9VLjZp4jLvz';
 
@@ -28,11 +34,33 @@ function _getOrgList(){
   return HOST_URI + orgList;
 }
 
+//get org con
+function _getCon(){
+  return HOST_URI + getCon;
+}
+
+//get org user
+function _getUser(){
+  return HOST_URI + getUser;
+}
+
+//get user detail
+function _userDetail(){
+  return HOST_URI + userDetail;
+}
+
+function _userEditFirst(){
+  return HOST_URI + userEditFirst;
+}
+
+function _userEditSecond(){
+  return HOST_URI + userEditSecond;
+}
+
 
 function _showUser(id){
   return HOST_URI + USERS + SHOW_ID + id;
 }
-
 
 function _isNone(s){
   return s == '' || s == null || s == undefined;
@@ -41,5 +69,10 @@ function _isNone(s){
 
 module.exports = {
   getLogin: _getLogin,
-  getOrgList:_getOrgList
+  getOrgList:_getOrgList,
+  getCon:_getCon,
+  getUser:_getUser,
+  userDetail:_userDetail,
+  userEditFirst:_userEditFirst,
+  userEditSecond:_userEditSecond,
 };

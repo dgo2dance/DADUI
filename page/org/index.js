@@ -10,7 +10,7 @@ Page({
     var that = this
     //调用应用实例的方法获取全局数据,进行登录
     console.log('checkSession'+wx.checkSession());
- //   app.getUserInfo(loginRequest);
+    app.getUserInfo(loginRequest);
    // loginRequest(that.globalData.userInfo,that.globalData.openid)
     //向服务端发起请求，获取org信息
     getOrg(that);
@@ -70,9 +70,6 @@ function loginRequest(userInfo,openid) {
  */
 function getOrg(that){
    console.log("getOrg");
-   wx.showModal({
-  title: 'GETOrg'
-});
    var sessionId= wx.getStorageSync('JSESSIONID');
    console.log("sessionId"+sessionId);
    wx.request({

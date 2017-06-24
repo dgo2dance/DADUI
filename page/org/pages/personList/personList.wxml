@@ -22,14 +22,23 @@
 
 
     <block wx:for-items="{{items}}">
-        <navigator url="../person/person?{{id}}" class="flex item">
+        <navigator url="../person/person?id={{item.id}}" class="flex item">
             <view class="item_left">
-                <image src="{{item.image}}"/>
+                <image src="{{item.avatarUrl}}"/>
             </view>
-            <view class="flex_auto item_middle">
-                <view><text class="title">{{item.title}}</text>
-                <text class="gender">  {{item.gender}}</text>
+            <view class="flex_auto item_middle" >
+
+                <view wx:if="{{item.gender == 1}}">
+                <text class="title">{{item.nickname}}</text>
+                <text class="gender">  G</text>
                 </view>
+
+                <view wx:else="{{item.gender == 1}}">
+                <text class="title">{{item.nickname}}</text>
+                <text class="gender">  M</text>
+                </view>
+
+
             </view>
         </navigator>
     </block>

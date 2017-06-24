@@ -4,8 +4,69 @@
 <view class="container">
   <view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <text class="userinfo-nickname">{{userInfo.nickname}}</text>
   </view>
+
+<view class="weui-cells weui-cells_form">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">城市:</text>
+        </view>
+        <view class="weui-cell__bd">
+           <text class="weui-label">{{userInfo.city}}</text>
+        </view>
+      </view>
+
+
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">身高:</text>
+        </view>
+        <view class="weui-cell__bd">
+           <text class="weui-label">{{userInfo.height}}cm</text>
+        </view>
+      </view>
+
+       <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">职业:</text>
+        </view>
+        <view class="weui-cell__bd">
+           <text class="weui-label">{{userInfo.profession}}</text>
+        </view>
+      </view>
+
+          <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">生日:</text>
+        </view>
+        <view class="weui-cell__bd">
+           <text class="weui-label">{{userInfo.birthdayTime}}</text>
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">是否有:</text>
+        </view>
+        <view class="weui-cell__bd">
+           <text class="weui-label">{{userInfo.isHouse}}</text>
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <text class="weui-label">介绍:</text>
+        </view>
+        <view class="weui-cell__bd">
+           <text class="weui-label">{{userInfo.introduce}}</text>
+        </view>
+      </view>
+
+
+</view>
+
+
     <view class="navigator-box">
       <block wx:for-items="{{list}}" wx:key="{{item.id}}">
         <navigator url="pages/{{item.url}}" class="navigator">

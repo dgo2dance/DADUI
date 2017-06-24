@@ -1,37 +1,12 @@
 //index.js
 //获取应用实例
-var app = getApp()
+
+var api = require('../../../../utils/api.js');
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
-    list: [ {
-        id: 'storage',
-        name: '个人信息',
-        url: 'info01/info01'
-      },
-    {
-        id: 'myChat',
-        name: '我加微信的人',
-        url: 'myChat/myChat'
-      },
-    {
-        id: 'chatMe',
-        name: '加我微信的人',
-        url: 'chatMe/chatMe'
-      },
-       {
-        id: 'sugar',
-        name: 'sugar',
-        url: 'sugar/sugar'
-      }, 
-       {
-        id: 'myOrg',
-        name: '我的圈子',
-        url: 'myOrg/myOrg'
-      }
-
-    ]
+    list: []
   },
   //事件处理函数
   bindViewTap: function() {
@@ -39,20 +14,14 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      });
-    });
-    var list = this.data.list;
-     that.setData({
-      list: list
-    });
+  onLoad: function (options) {
+    var that = this;
+    console.log('onLoad');
+     console.log('id'+options.id);
+    
+     // 开始请求数据
+    requestData(that,options.id);
+ 
 
   },
 
@@ -62,3 +31,37 @@ Page({
     });
   }
 })
+
+
+
+/**
+ * 请求数据  获取用户列表
+ * @param that Page的对象，用其进行数据的更新
+ * @param targetPage 请求的目标页码
+ */
+function requestData(that,id) {
+   var sessionId= wx.getStorageSync('JSESSIONID');
+    wx.request({
+        url: api.userDetail(),
+        header: {
+        'Content-type': 'application/x-www-form-urlencoded',
+        'Cookie':'SESSION='+sessionId
+        },
+        data:{'userId':id},
+        method:'GET',
+        success: function (res) {
+            if (res == null ||
+                res.data == null) {
+                console.error(Constant.ERROR_DATA_IS_NULL);
+                return;
+            }
+
+            that.setData({
+                userInfo: res.data.data,
+                hidden: true
+            });
+
+            mCurrentPage = targetPage;
+        }
+    });
+}

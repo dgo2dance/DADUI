@@ -13,7 +13,7 @@
 
     <block>
 
-    <navigator url="../personList/personList" class="org_top">
+    <navigator url="../personList/personList?id={{id}}" class="org_top">
     
         <view class="top_name"> 每日一图</view>
     </navigator>
@@ -23,12 +23,12 @@
 
     <block wx:for-items="{{items}}">
         <view class="flex item">
-            <view class="item_left">
-                <image src="{{item.image}}"/>
+            <view class="item_left" data-id="{{item.createUserId}}" bindtap="goUserDetail">
+                <image src="{{item.avatarUrl}}"/>
             </view>
             <view class="flex_auto item_middle">
-                <view><text class="title">{{item.title}}</text></view>
-                <view><text class="sub_title">{{item.subTitle}}</text></view>
+                <view><text class="title">{{item.nickname}}</text></view>
+                <view><text class="sub_title">{{item.con}}</text></view>
                 </view>
         
         </view>

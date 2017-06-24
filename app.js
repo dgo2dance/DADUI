@@ -7,21 +7,13 @@ App({
     wx.setStorageSync('logs', logs)
   },
   getUserInfo:function(cb){
-      wx.showModal({
-  title: '0'
-});
-    var that = this
+
+    var that = this;
     if(this.globalData.userInfo){  
-       wx.showModal({
-  title: '1'
-});
+
       typeof cb == "function" && cb(this.globalData.userInfo)
     }else{
       //调用登录接口
-
-       wx.showModal({
-  title: '2'
-});
 
       wx.login({
         success: function (loginCode) {
